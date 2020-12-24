@@ -1,9 +1,9 @@
-.widget-container {
-    margin-top: 50px;
-}
-
 .widget {
     text-align: center;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 40px;
 }
 
 .widget-title {
@@ -20,4 +20,8 @@
 
 .widget-val {
     font-size: 3em;
+}
+
+.row {
+    margin-top: 50px;
 }

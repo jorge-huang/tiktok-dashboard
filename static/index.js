@@ -1,12 +1,36 @@
+function createTd(val) {
+    const tdEl = document.createElement('td');
+    tdEl.innerHTML = val;
+    return tdEl;
+}
+
+function updateTable(data) {
+    const trackerEl = document.querySelector('#tracker tbody');
+    const trEl = document.createElement('tr');
+    trEl.appendChild(createTd(new Date()))
+    trEl.appendChild(createTd(data.followers))
+    trEl.appendChild(createTd(data.likes))
+    trackerEl.appendChild(trEl);
+}
+
 const socket = io();
+let prevVals = '';
 socket.emit('refresh_data');
 socket.on('data', (data) => {
+    if (!data) return;
+
     document.getElementById('followers').innerHTML = data.followers;
     document.getElementById('likes').innerHTML = data.likes;
-    timestamp = Date.now();
-    console.log(timestamp, data);
+
+    const currentVals = data.followers + data.likes;
+    if (currentVals === prevVals) return;
+
+    updateTable(data)
+    prevVals = currentVals;
 });
 
 setInterval(() => {
     socket.emit('refresh_data');
-}, 30 * 1000);
+}, 60 * 1000 / 4);
+
+
