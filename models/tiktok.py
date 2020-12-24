@@ -10,16 +10,16 @@ class TikTok:
         self._last_update = float('-inf')
         self._cache = None
         self._browser = Browser()
+        self.TIME_OUT = 60 / 2
 
     def __update_cache(self):
-        if not self._cache or (time() - self._last_update) > 60:
+        if not self._cache or (time() - self._last_update) > self.TIME_OUT:
             url = f'https://www.tiktok.com/{self.account_handle}'
             txt = self._browser.get_html_by_class_name(url, 'count-infos')
             fields = ['Following', 'Followers', 'Liles']
             vals = re.findall("\d+", txt)
             self._cache = tuple(zip(fields, vals))
             self._last_update = time()
-            print('### Cache updated ###')
 
     def _update_followers(self):
         self.followers = self._cache[1][1]
