@@ -10,10 +10,10 @@ class TikTok:
         self._last_update = float('-inf')
         self._cache = None
         self._browser = Browser()
-        self.TIME_OUT = 60 / 2
+        self.REFRESH_RATE = 60 / 4
 
     def __update_cache(self):
-        if not self._cache or (time() - self._last_update) > self.TIME_OUT:
+        if not self._cache or (time() - self._last_update) > self.REFRESH_RATE:
             url = f'https://www.tiktok.com/{self.account_handle}'
             txt = self._browser.get_html_by_class_name(url, 'count-infos')
             fields = ['Following', 'Followers', 'Liles']
