@@ -1,0 +1,23 @@
+.widget-container {
+    margin-top: 50px;
+}
+
+.widget {
+    text-align: center;
+}
+
+.widget-title {
+    font-size: 1.5em;
+}
+
+.widget-title[title=followers] {
+    color: cornflowerblue;
+}
+
+.widget-title[title=likes] {
+    color: brown;
+}
+
+.widget-val {
+    font-size: 3em;
+}

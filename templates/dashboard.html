@@ -2,13 +2,21 @@
 
 {% block content %}
 <h1 class="text-center">Dashboard</h1>
-<div class="container">
-    <div>Followers: <span id="followers">0</span></div>
-    <div>Likes: <span id="likes">0</span></div>
+<div class="widget-container container">
+    <div class="row">
+        <div class="widget col">
+            <div class="widget-title" title="followers">Followers</div>
+            <div class="widget-val" id="followers">0</div>
+        </div>
+        <div class="widget col">
+            <div class="widget-title" title="likes">Likes</div>
+            <div class="widget-val" id="likes">0</div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" charset="utf-8">
     var socket = io();
-
+    socket.emit('refresh_data');
     socket.on('data', (data) => {
         document.getElementById('followers').innerHTML = data.followers;
         document.getElementById('likes').innerHTML = data.likes;
