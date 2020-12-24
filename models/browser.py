@@ -11,7 +11,7 @@ class Browser:
     def __navigate_to(self, url):
         self._browser.get(url)
 
-    def get_html_by_class_name(self, url, class_name):
+    def get_inner_text_by_class_name(self, url, class_name):
         self.__navigate_to(url)
         el = self._browser.find_element_by_class_name(class_name)
-        return el.get_attribute('innerHTML')
+        return el.get_attribute('innerText')

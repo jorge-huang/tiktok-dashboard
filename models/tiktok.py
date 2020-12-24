@@ -15,10 +15,12 @@ class TikTok:
     def __update_cache(self):
         if not self._cache or (time() - self._last_update) > self.REFRESH_RATE:
             url = f'https://www.tiktok.com/{self.account_handle}'
-            txt = self._browser.get_html_by_class_name(url, 'count-infos')
-            fields = ['Following', 'Followers', 'Liles']
-            vals = re.findall("\d+", txt)
-            self._cache = tuple(zip(fields, vals))
+            txt = self._browser.get_inner_text_by_class_name(url, 'count-infos')
+            vals = txt.split('\n')
+            self._cache = []
+            for i in range(0, len(vals), 2):
+                temp = [vals[i + 1], vals[i]]
+                self._cache.append(temp)
             self._last_update = time()
 
     def _update_followers(self):
