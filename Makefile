@@ -5,6 +5,7 @@ dev:
 
 setup-dev:
 	pip install --upgrade -r requirements.txt -r requirements_test.txt
+	cp geckodriver venv/bin
 
 lint:
 	pylint ./**/*.py ./app.py
