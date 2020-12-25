@@ -41,7 +41,7 @@ socket.on('data', (data) => {
 
     const currentVals = [data.followers, data.likes];
     const hasChange = currentVals.some((val, i) => {
-        return (val - prevVals[i]) > 0;
+        return (val - prevVals[i]) !== 0;
     });
     if (!hasChange) return;
 
