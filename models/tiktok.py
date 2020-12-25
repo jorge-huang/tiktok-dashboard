@@ -24,16 +24,16 @@ class TikTok:
             self.__cache.append(temp)
         self.__last_update = time()
 
-    def _update_followers(self):
+    def __update_followers(self):
         self.followers = self.__cache[1][1]
 
-    def _update_likes(self):
+    def __update_likes(self):
         self.likes = self.__cache[2][1]
 
     def refresh_data(self):
         try:
             self.__update_cache()
-            self._update_followers()
-            self._update_likes()
+            self.__update_followers()
+            self.__update_likes()
         except Exception as e:
             print('FAILED TO REFRESH CACHE', e)
