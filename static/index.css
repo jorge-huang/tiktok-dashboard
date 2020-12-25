@@ -1,31 +1,31 @@
 .acc-handle {
-    text-align: center;
+	text-align: center;
 }
 
 .widget {
-    text-align: center;
-    border: 1px solid black;
-    margin: 5px;
-    border-radius: 5px;
-    padding: 40px;
+	text-align: center;
+	border: 1px solid black;
+	margin: 5px;
+	border-radius: 5px;
+	padding: 40px;
 }
 
 .widget-title {
-    font-size: 1.5em;
+	font-size: 1.5em;
 }
 
-.widget-title[title=followers] {
-    color: cornflowerblue;
+.widget-title[title='followers'] {
+	color: cornflowerblue;
 }
 
-.widget-title[title=likes] {
-    color: brown;
+.widget-title[title='likes'] {
+	color: brown;
 }
 
 .widget-val {
-    font-size: 3em;
+	font-size: 3em;
 }
 
 .row {
-    margin-top: 50px;
+	margin-top: 50px;
 }
