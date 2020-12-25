@@ -13,10 +13,6 @@ function calcValueDelta(curr, prev) {
         return '+' + res;
     }
 
-    if (curr < prev) {
-        return '-' + res;
-    }
-
     return res;
 }
 
