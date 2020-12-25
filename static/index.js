@@ -8,11 +8,15 @@ function createTd(val) {
     if (val.indexOf('-') >= 0) {
         $(tdEl).css('color', 'red');
     }
-    
+
     return tdEl;
 }
 
 function calcValueDelta(curr, prev) {
+    if (!prev) {
+        return ''
+    }
+
     curr = parseInt(curr);
     prev = parseInt(prev);
     let res = curr - prev;
@@ -39,7 +43,7 @@ function updateTable(data, prevFollowers, prevLikes) {
 }
 
 const socket = io();
-let prevVals = [0, 0];
+let prevVals = [null, null];
 socket.emit('refresh_data');
 socket.on('data', (data) => {
     if (!data) return;
