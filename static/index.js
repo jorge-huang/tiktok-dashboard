@@ -1,6 +1,8 @@
 function createTd(val) {
+    val = val ? val.toString() : '';
     const tdEl = document.createElement('td');
     tdEl.innerHTML = val;
+
     if (val.indexOf('+') >= 0) {
         $(tdEl).css('color', 'green');
     }
@@ -25,7 +27,7 @@ function calcValueDelta(curr, prev) {
         return '+' + res;
     }
 
-    return res;
+    return res === 0 ? '' : res;
 }
 
 function updateTable(data, prevFollowers, prevLikes) {
@@ -43,7 +45,7 @@ function updateTable(data, prevFollowers, prevLikes) {
 }
 
 const socket = io();
-let prevVals = [null, null];
+let prevVals = [0, 0];
 socket.emit('refresh_data');
 socket.on('data', (data) => {
     if (!data) return;
@@ -55,6 +57,7 @@ socket.on('data', (data) => {
     const hasChange = currentVals.some((val, i) => {
         return (val - prevVals[i]) !== 0;
     });
+
     if (!hasChange) return;
 
     updateTable(data, prevVals[0], prevVals[1])

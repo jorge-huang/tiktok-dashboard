@@ -11,7 +11,10 @@ class Browser:
     def __navigate_to(self, url):
         self.__browser.get(url)
 
-    def get_inner_text_by_class_name(self, url, class_name):
-        self.__navigate_to(url)
-        el = self.__browser.find_element_by_class_name(class_name)
-        return el.get_attribute('innerText')
+    def get_followers_and_likes(self, handle):
+        self.__navigate_to(f'https://www.tiktok.com/{handle}')
+        get_stats_js_str = "JSON.parse(document.getElementById('__NEXT_DATA__').innerText).props.pageProps.userInfo.stats"
+        followers = self.__browser.execute_script(f'return {get_stats_js_str}.followerCount')
+        likes = self.__browser.execute_script(f'return {get_stats_js_str}.heartCount')
+
+        return (followers, likes)
