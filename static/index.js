@@ -1,6 +1,14 @@
 function createTd(val) {
     const tdEl = document.createElement('td');
     tdEl.innerHTML = val;
+    if (val.indexOf('+') >= 0) {
+        $(tdEl).css('color', 'green');
+    }
+
+    if (val.indexOf('-') >= 0) {
+        $(tdEl).css('color', 'red');
+    }
+    
     return tdEl;
 }
 
