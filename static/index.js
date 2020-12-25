@@ -28,6 +28,10 @@ function updateTable(data, prevFollowers, prevLikes) {
     trEl.appendChild(createTd(data.likes))
     trEl.appendChild(createTd(calcValueDelta(data.likes, prevLikes)))
     $('#tracker tbody').prepend(trEl);
+
+    if ($('tr').length > 10) {
+        $('tr').last().remove();
+    }
 }
 
 const socket = io();
