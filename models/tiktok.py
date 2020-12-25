@@ -6,29 +6,29 @@ class TikTok:
         self.account_handle = account_handle
         self.followers = 0
         self.likes = 0
-        self._last_update = time()
-        self._cache = []
-        self._browser = Browser()
+        self.__last_update = time()
+        self.__cache = []
+        self.__browser = Browser()
         self.REFRESH_RATE = 60 / 4
 
     def __update_cache(self):
-        if (time() - self._last_update) < self.REFRESH_RATE:
+        if (time() - self.__last_update) < self.REFRESH_RATE:
             return
 
         url = f'https://www.tiktok.com/{self.account_handle}'
-        txt = self._browser.get_inner_text_by_class_name(url, 'count-infos')
+        txt = self.__browser.get_inner_text_by_class_name(url, 'count-infos')
         vals = txt.split('\n')
-        self._cache = []
+        self.__cache = []
         for i in range(0, len(vals), 2):
             temp = [vals[i + 1], vals[i]]
-            self._cache.append(temp)
-        self._last_update = time()
+            self.__cache.append(temp)
+        self.__last_update = time()
 
     def _update_followers(self):
-        self.followers = self._cache[1][1]
+        self.followers = self.__cache[1][1]
 
     def _update_likes(self):
-        self.likes = self._cache[2][1]
+        self.likes = self.__cache[2][1]
 
     def refresh_data(self):
         try:
