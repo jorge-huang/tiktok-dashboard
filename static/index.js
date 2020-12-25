@@ -5,12 +5,11 @@ function createTd(val) {
 }
 
 function updateTable(data) {
-    const trackerEl = document.querySelector('#tracker tbody');
     const trEl = document.createElement('tr');
     trEl.appendChild(createTd(new Date()))
     trEl.appendChild(createTd(data.followers))
     trEl.appendChild(createTd(data.likes))
-    trackerEl.appendChild(trEl);
+    $('#tracker tbody').prepend(trEl);
 }
 
 const socket = io();
