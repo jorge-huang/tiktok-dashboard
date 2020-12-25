@@ -1,7 +1,7 @@
 .PHONY: deploy dev clean setup-dev lint
 
 dev:
-	FLASK_APP=app.py FLASK_ENV=development flask run
+	FLASK_APP=app.py FLASK_ENV=development ACC_HANDLE={account_handle} flask run
 
 setup-dev:
 	pip install --upgrade -r requirements.txt -r requirements_test.txt

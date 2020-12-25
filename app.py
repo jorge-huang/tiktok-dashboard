@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 from models import TikTok
+import os
 
 app = Flask(__name__)
 socketio = SocketIO(app)
-# TODO: replace with env variable ACC_HANDLE
-tiktok = TikTok('{account handle}')
+tiktok = TikTok(os.getenv('ACC_HANDLE'))
 
 
 def emit_data():
