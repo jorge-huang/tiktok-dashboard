@@ -1,5 +1,5 @@
 # TikTok Dashboard
-### Display count of followers and likes without the need to refresh the page
+Display count of followers and likes without the need to refresh the page
 
 ## Requirements
 1. Python 3
